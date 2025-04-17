@@ -34,5 +34,12 @@ namespace MyApp.API.Controllers
             await _productService.AddProductAsync(name, userId);
             return Ok("Product added successfully");
         }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public async Task<IActionResult> Products()
+        {
+            return Ok(await _productService.GetProducts());
+        }
     }
 }

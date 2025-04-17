@@ -32,5 +32,10 @@ namespace MyApp.Application.Services
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<List<Product>> GetProducts()
+        {
+            return _context.Products.ToList();
+        }
     }
 }
